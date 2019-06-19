@@ -1,0 +1,58 @@
+homepage:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /user
+        permanent: true
+users:
+    path: /user
+    controller: App\Controller\UserController::renderUsersList
+editUser:
+    path: /user/edit/{slug}
+    controller: App\Controller\UserController::renderEditUser
+    defaults:
+        slug: ''
+deleteUser:
+    path: /user/delete/{slug}
+    controller: App\Controller\UserController::deleteUser
+
+editGroup:
+    path: /user/group/edit/{slug}
+    controller: App\Controller\UserController::renderEditGroup
+    defaults:
+        slug: ''
+deleteGroup:
+    path: /user/group/delete/{slug}
+    controller: App\Controller\UserController::deleteUserGroup
+
+apiRoutes:
+    path: /api/routes
+    controller: App\Controller\ApiController::routes
+
+apiGetUsers:
+    path: /api/user/list
+    controller: App\Controller\ApiController::getUsers
+apiAddUser:
+    path: /api/user/add
+    controller: App\Controller\ApiController::addUser
+    requirements:
+apiEditUser:
+    path: /api/user/edit
+    controller: App\Controller\ApiController::editUser
+apiDeleteUser:
+    path: /api/user/delete
+    controller: App\Controller\ApiController::deleteUser
+
+apiGetUserGroups:
+    path: /api/user/group/list
+    controller: App\Controller\ApiController::getUserGroups
+apiAddUserGroup:
+    path: /api/user/group/add
+    controller: App\Controller\ApiController::addUserGroup
+    requirements:
+apiEditUserGroup:
+    path: /api/user/group/edit
+    controller: App\Controller\ApiController::editUserGroup
+apiDeleteUserGroup:
+    path: /api/user/group/delete
+    controller: App\Controller\ApiController::deleteUserGroup

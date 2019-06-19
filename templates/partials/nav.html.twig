@@ -1,0 +1,17 @@
+{% macro navLink(pathName) %}
+<a class="nav-link {% if app.request.pathInfo == path(pathName) %}active{% endif %}" href="{{ path(pathName) }}">Home</a>
+{% endmacro %}
+
+{% import _self as navMacros %}
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<ul class="nav nav-pills">
+				<li class="nav-item">
+					{{ navMacros.navLink('users') }}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+{% extends 'partials/page.container.html.twig' %}
+
+{% block container %}
+
+{% import 'partials/cms.table.html.twig' as cms %}
+<div class="container">
+
+	<div class="row">
+		<div class="col d-flex justify-content-start align-items-center">
+			<h1>Users</h1>
+		</div>
+		<div class="col d-flex justify-content-end align-items-center">
+			<a class="btn btn-primary" href="/user/edit">New User</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			{% if users is empty %}
+			<p>No Users Exist</p>
+			{% else %}
+			{{ cms.table({name: 'Name', userGroup: 'Group'}, users) }}
+			{% endif %}
+		</div>
+	</div>
+		
+	<div class="row">
+		<div class="col d-flex justify-content-start align-items-center">
+			<h1>Groups</h1>
+		</div>
+		<div class="col d-flex justify-content-end align-items-center">
+			<a class="btn btn-primary" href="/user/group/edit">New Group</a>
+		</div>
+	</div>
+
+
+
+	{% if groups is empty %}
+	<p>No Groups Exist</p>
+	{% else %}
+	{{ cms.table({title: 'Title'}, groups) }}
+	{% endif %}
+</div>
+
+
+{% endblock %}

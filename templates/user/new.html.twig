@@ -1,0 +1,18 @@
+{% extends 'partials/page.container.html.twig' %}
+
+{% block container %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>{{ title }}</h1>
+			{{ form(form) }}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>const routes = {{ include('partials/api.routes.html.twig') }}</script>
+	{{ encore_entry_script_tags('cms') }}
+{% endblock %}

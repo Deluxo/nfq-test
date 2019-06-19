@@ -1,0 +1,34 @@
+{% macro table(columnMap, items) %}
+<table class="table">
+	<thead>
+		<tr>
+			{% for title in columnMap %}
+			<th>
+				{{ title }}
+			</th>
+			{% endfor %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in items %}
+
+		{% if item.toCmsTable is defined %}
+		{% set tableFormat = item.toCmsTable() %}
+
+		<tr>
+			{% for key, _ in columnMap %}
+			<td>
+				{% if tableFormat[key].link is defined %}
+				<a href="{{ tableFormat[key].link }}">
+					{% if tableFormat[key].text is defined %}{{ tableFormat[key].text }}{% endif %}
+				</a>
+				{% elseif tableFormat[key].text is defined %}{{ tableFormat[key].text }}{% endif %}
+			</td>
+			{% endfor %}
+		</tr>
+		{% endif %}
+
+		{% endfor %}
+	</tbody>
+</table>
+{% endmacro %}

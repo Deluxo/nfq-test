@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<br>
+	{{ include('partials/nav.html.twig') }}
+	<br>
+	{{ include('partials/flashes.html.twig') }}
+	<br>
+	{% block container %}{% endblock %}
+{% endblock %}
